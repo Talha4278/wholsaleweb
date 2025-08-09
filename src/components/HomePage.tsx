@@ -3,7 +3,7 @@ import { Heart, Sparkles, SprayCan as Spray, ShoppingCart, Wrench, FileText, Arr
 
 const HomePage: React.FC = () => {
   const categories = [
-    { icon: Heart, name: 'Health & Wellness', color: 'text-green-600' },
+    { icon: Heart, name: 'Health & Wellness', color: 'text-green-600',image: '\src\img\Gemini_Generated_Image_yvt5tvyvt5tvyvt5.jpg' },
     { icon: Sparkles, name: 'Beauty & Personal Care', color: 'text-pink-600' },
     { icon: Spray, name: 'Household Cleaning', color: 'text-blue-600' },
     { icon: ShoppingCart, name: 'Grocery', color: 'text-orange-600' },
@@ -22,26 +22,47 @@ const HomePage: React.FC = () => {
       {/* Hero Section */}
       <div className="bg-gradient-to-br from-blue-50 via-white to-blue-50 py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-4xl mx-auto">
-            <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight">
-              Trusted Products Sourcing & Distribution Partner
-            </h1>
-            <p className="text-xl md:text-2xl text-blue-700 font-semibold mb-8">
-              UK Registered & Amazon FBA Specialist
-            </p>
-            <p className="text-lg text-gray-600 mb-10 max-w-3xl mx-auto">
-              We are your reliable partner for sourcing and distributing high-quality products 
-              across multiple categories. With extensive experience in Amazon FBA operations, 
-              we ensure swift and efficient delivery to customers worldwide.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="bg-blue-700 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-blue-800 transition-colors duration-300 flex items-center justify-center group">
-                Explore Categories
-                <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform duration-300" size={20} />
-              </button>
-              <button className="border-2 border-blue-700 text-blue-700 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-blue-700 hover:text-white transition-colors duration-300">
-                Become a Partner
-              </button>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            {/* Text Content */}
+            <div className="text-center lg:text-left">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight">
+                Trusted Products Sourcing & Distribution Partner
+              </h1>
+              <p className="text-xl md:text-2xl text-blue-700 font-semibold mb-8">
+                UK Registered & Amazon FBA Specialist
+              </p>
+              <p className="text-lg text-gray-600 mb-10">
+                We are your reliable partner for sourcing and distributing high-quality products 
+                across multiple categories. With extensive experience in Amazon FBA operations, 
+                we ensure swift and efficient delivery to customers worldwide.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                <button className="bg-blue-700 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-blue-800 transition-colors duration-300 flex items-center justify-center group">
+                  Explore Categories
+                  <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform duration-300" size={20} />
+                </button>
+                <button className="border-2 border-blue-700 text-blue-700 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-blue-700 hover:text-white transition-colors duration-300">
+                  Become a Partner
+                </button>
+              </div>
+            </div>
+            
+            {/* Hero Image */}
+            <div className="relative">
+              <div className="relative overflow-hidden rounded-2xl shadow-2xl">
+                <img 
+                  src="\src\img\Gemini_Generated_Image_h3neluh3neluh3ne.jpg" 
+                  alt="Wholesale Distribution - Products and Logistics" 
+                  className="w-full h-96 lg:h-[500px] object-cover hover:scale-105 transition-transform duration-700"
+                />
+                {/* Overlay for better visual appeal */}
+                <div className="absolute inset-0 bg-gradient-to-t from-blue-900/20 to-transparent"></div>
+              </div>
+              
+              {/* Floating badge */}
+              <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-4 py-2 rounded-full shadow-lg">
+                <span className="text-sm font-semibold text-blue-700">UK Registered</span>
+              </div>
             </div>
           </div>
         </div>
@@ -100,7 +121,7 @@ const HomePage: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Why Choose TradePro
+              Why Choose QASIM ALI LTD
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
               We build long-term relationships based on trust, quality, and reliability.

@@ -1,7 +1,16 @@
 import React from 'react';
 import { Heart, Sparkles, SprayCan as Spray, ShoppingCart, Wrench, FileText, ArrowRight, CheckCircle } from 'lucide-react';
 
-const CategoriesPage: React.FC = () => {
+interface CategoriesPageProps {
+  onLearnMore?: () => void;
+}
+
+const CategoriesPage: React.FC<CategoriesPageProps> = ({ onLearnMore }) => {
+  const handleLearnMore = () => {
+    if (onLearnMore) {
+      onLearnMore();
+    }
+  };
   const categories = [
     {
       icon: Heart,
@@ -16,7 +25,8 @@ const CategoriesPage: React.FC = () => {
       ],
       color: 'from-green-400 to-green-600',
       bgColor: 'bg-green-50',
-      iconColor: 'text-green-600'
+      iconColor: 'text-green-600',
+      image: '/src/img/Gemini_Generated_Image_7md7hl7md7hl7md7.jpg'
     },
     {
       icon: Sparkles,
@@ -31,7 +41,8 @@ const CategoriesPage: React.FC = () => {
       ],
       color: 'from-pink-400 to-pink-600',
       bgColor: 'bg-pink-50',
-      iconColor: 'text-pink-600'
+      iconColor: 'text-pink-600',
+      image: '/src/img/Gemini_Generated_Image_yvt5tvyvt5tvyvt5.jpg'
     },
     {
       icon: Spray,
@@ -46,7 +57,8 @@ const CategoriesPage: React.FC = () => {
       ],
       color: 'from-blue-400 to-blue-600',
       bgColor: 'bg-blue-50',
-      iconColor: 'text-blue-600'
+      iconColor: 'text-blue-600',
+      image: '/src/img/Gemini_Generated_Image_cgck4gcgck4gcgck.jpg'
     },
     {
       icon: ShoppingCart,
@@ -61,7 +73,8 @@ const CategoriesPage: React.FC = () => {
       ],
       color: 'from-orange-400 to-orange-600',
       bgColor: 'bg-orange-50',
-      iconColor: 'text-orange-600'
+      iconColor: 'text-orange-600',
+      image: '/src/img/Gemini_Generated_Image_wy3ub6wy3ub6wy3u.jpg'
     },
     {
       icon: Wrench,
@@ -76,7 +89,8 @@ const CategoriesPage: React.FC = () => {
       ],
       color: 'from-gray-400 to-gray-600',
       bgColor: 'bg-gray-50',
-      iconColor: 'text-gray-600'
+      iconColor: 'text-gray-600',
+      image: '/src/img/Gemini_Generated_Image_h3neluh3neluh3ne.jpg'
     },
     {
       icon: FileText,
@@ -91,7 +105,8 @@ const CategoriesPage: React.FC = () => {
       ],
       color: 'from-purple-400 to-purple-600',
       bgColor: 'bg-purple-50',
-      iconColor: 'text-purple-600'
+      iconColor: 'text-purple-600',
+      image: '/src/img/Gemini_Generated_Image_u62qrnu62qrnu62q.jpg'
     }
   ];
 
@@ -117,12 +132,21 @@ const CategoriesPage: React.FC = () => {
               key={index} 
               className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden group hover:-translate-y-1"
             >
-              <div className={`bg-gradient-to-r ${category.color} p-6`}>
-                <div className="flex items-center text-white">
-                  <div className="bg-white bg-opacity-20 p-4 rounded-xl mr-6">
-                    <category.icon size={32} />
+              {/* Image Section */}
+              <div className="relative h-48 overflow-hidden">
+                <img 
+                  src={category.image} 
+                  alt={`${category.name} products`}
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+                <div className={`absolute inset-0 bg-gradient-to-t ${category.color} opacity-80`}></div>
+                <div className="absolute top-4 left-4">
+                  <div className="bg-white bg-opacity-20 backdrop-blur-sm p-3 rounded-xl">
+                    <category.icon className="text-white" size={28} />
                   </div>
-                  <h3 className="text-2xl font-bold">{category.name}</h3>
+                </div>
+                <div className="absolute bottom-4 left-4 right-4">
+                  <h3 className="text-2xl font-bold text-white">{category.name}</h3>
                 </div>
               </div>
               
@@ -140,7 +164,10 @@ const CategoriesPage: React.FC = () => {
                   ))}
                 </div>
                 
-                <button className={`inline-flex items-center px-6 py-3 rounded-lg font-semibold text-sm transition-all duration-300 ${category.bgColor} ${category.iconColor} hover:shadow-md group-hover:translate-x-1`}>
+                <button 
+                  onClick={handleLearnMore}
+                  className={`inline-flex items-center px-6 py-3 rounded-lg font-semibold text-sm transition-all duration-300 ${category.bgColor} ${category.iconColor} hover:shadow-md group-hover:translate-x-1 cursor-pointer`}
+                >
                   Learn More
                   <ArrowRight className="ml-2" size={16} />
                 </button>

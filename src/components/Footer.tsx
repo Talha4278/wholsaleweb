@@ -140,7 +140,7 @@ const Footer: React.FC = () => {
                 Trusted by brands and distributors across 6 major categories
               </p>
               <p className="text-gray-500 text-xs">
-                © {currentYear} TradePro Distribution Ltd. All rights reserved.
+                © {currentYear} QASIM ALI BAKSH  Ltd. All rights reserved.
               </p>
             </div>
           </div>

@@ -29,7 +29,7 @@ const ContactPage: React.FC = () => {
       icon: MapPin,
       title: 'Company Address',
       details: [
-        'TradePro Distribution Ltd',
+        'QASIM ALI BAKSH Ltd',
         '123 Business Park Drive',
         'London, UK SW1A 1AA'
       ]
@@ -38,18 +38,14 @@ const ContactPage: React.FC = () => {
       icon: Mail,
       title: 'Email Addresses',
       details: [
-        'info@tradepro.uk',
-        'partnerships@tradepro.uk',
-        'support@tradepro.uk'
+        ' qasim@qabdistribution.co.uk'
       ]
     },
     {
       icon: Phone,
       title: 'Phone Numbers',
       details: [
-        '+44 20 1234 5678',
-        '+44 20 1234 5679 (Sales)',
-        '+44 20 1234 5680 (Support)'
+        '+44 73 6026 2179'
       ]
     },
     {
