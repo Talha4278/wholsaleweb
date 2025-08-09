@@ -3,7 +3,7 @@ import { Heart, Sparkles, SprayCan as Spray, ShoppingCart, Wrench, FileText, Arr
 
 const HomePage: React.FC = () => {
   const categories = [
-    { icon: Heart, name: 'Health & Wellness', color: 'text-green-600',image: '\src\img\Gemini_Generated_Image_yvt5tvyvt5tvyvt5.jpg' },
+    { icon: Heart, name: 'Health & Wellness', color: 'text-green-600' },
     { icon: Sparkles, name: 'Beauty & Personal Care', color: 'text-pink-600' },
     { icon: Spray, name: 'Household Cleaning', color: 'text-blue-600' },
     { icon: ShoppingCart, name: 'Grocery', color: 'text-orange-600' },
@@ -51,7 +51,7 @@ const HomePage: React.FC = () => {
             <div className="relative">
               <div className="relative overflow-hidden rounded-2xl shadow-2xl">
                 <img 
-                  src="\src\img\Gemini_Generated_Image_h3neluh3neluh3ne.jpg" 
+                  src="/img/Gemini_Generated_Image_h3neluh3neluh3ne.jpg" 
                   alt="Wholesale Distribution - Products and Logistics" 
                   className="w-full h-96 lg:h-[500px] object-cover hover:scale-105 transition-transform duration-700"
                 />

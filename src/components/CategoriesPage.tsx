@@ -26,7 +26,7 @@ const CategoriesPage: React.FC<CategoriesPageProps> = ({ onLearnMore }) => {
       color: 'from-green-400 to-green-600',
       bgColor: 'bg-green-50',
       iconColor: 'text-green-600',
-      image: '/src/img/Gemini_Generated_Image_7md7hl7md7hl7md7.jpg'
+      image: '/img/Gemini_Generated_Image_7md7hl7md7hl7md7.jpg'
     },
     {
       icon: Sparkles,
@@ -42,7 +42,7 @@ const CategoriesPage: React.FC<CategoriesPageProps> = ({ onLearnMore }) => {
       color: 'from-pink-400 to-pink-600',
       bgColor: 'bg-pink-50',
       iconColor: 'text-pink-600',
-      image: '/src/img/Gemini_Generated_Image_yvt5tvyvt5tvyvt5.jpg'
+      image: '/img/Gemini_Generated_Image_yvt5tvyvt5tvyvt5.jpg'
     },
     {
       icon: Spray,
@@ -58,7 +58,7 @@ const CategoriesPage: React.FC<CategoriesPageProps> = ({ onLearnMore }) => {
       color: 'from-blue-400 to-blue-600',
       bgColor: 'bg-blue-50',
       iconColor: 'text-blue-600',
-      image: '/src/img/Gemini_Generated_Image_cgck4gcgck4gcgck.jpg'
+      image: '/img/Gemini_Generated_Image_cgck4gcgck4gcgck.jpg'
     },
     {
       icon: ShoppingCart,
@@ -74,7 +74,7 @@ const CategoriesPage: React.FC<CategoriesPageProps> = ({ onLearnMore }) => {
       color: 'from-orange-400 to-orange-600',
       bgColor: 'bg-orange-50',
       iconColor: 'text-orange-600',
-      image: '/src/img/Gemini_Generated_Image_wy3ub6wy3ub6wy3u.jpg'
+      image: '/img/Gemini_Generated_Image_wy3ub6wy3ub6wy3u.jpg'
     },
     {
       icon: Wrench,
@@ -90,7 +90,7 @@ const CategoriesPage: React.FC<CategoriesPageProps> = ({ onLearnMore }) => {
       color: 'from-gray-400 to-gray-600',
       bgColor: 'bg-gray-50',
       iconColor: 'text-gray-600',
-      image: '/src/img/Gemini_Generated_Image_h3neluh3neluh3ne.jpg'
+      image: '/img/Gemini_Generated_Image_h3neluh3neluh3ne.jpg'
     },
     {
       icon: FileText,
@@ -106,7 +106,7 @@ const CategoriesPage: React.FC<CategoriesPageProps> = ({ onLearnMore }) => {
       color: 'from-purple-400 to-purple-600',
       bgColor: 'bg-purple-50',
       iconColor: 'text-purple-600',
-      image: '/src/img/Gemini_Generated_Image_u62qrnu62qrnu62q.jpg'
+      image: '/img/Gemini_Generated_Image_u62qrnu62qrnu62q.jpg'
     }
   ];
 
