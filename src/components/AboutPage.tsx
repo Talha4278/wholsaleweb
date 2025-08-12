@@ -32,7 +32,7 @@ const AboutPage: React.FC = () => {
         {/* Header */}
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-            About TradePro
+            About QAB
           </h2>
           <div className="max-w-4xl mx-auto">
             <p className="text-lg text-gray-600 mb-8 leading-relaxed">
@@ -131,7 +131,18 @@ const AboutPage: React.FC = () => {
             Join our network of trusted partners and experience the difference that quality, 
             reliability, and expertise can make for your business.
           </p>
-          <button className="bg-blue-700 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-blue-800 transition-colors duration-300">
+          <button
+            onClick={() => {
+              const cta = document.getElementById('suppliers-cta');
+              if (cta) {
+                cta.scrollIntoView({ behavior: 'smooth' });
+              } else {
+                const contact = document.getElementById('contact');
+                if (contact) contact.scrollIntoView({ behavior: 'smooth' });
+              }
+            }}
+            className="bg-blue-700 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-blue-800 transition-colors duration-300"
+          >
             Get in Touch Today
           </button>
         </div>

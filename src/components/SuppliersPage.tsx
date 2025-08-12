@@ -1,5 +1,5 @@
 import React from 'react';
-import { Users, Handshake, TrendingUp, Mail, CheckCircle, ArrowRight, Award, Globe } from 'lucide-react';
+import { Users, TrendingUp, Mail, CheckCircle, ArrowRight, Award, Globe } from 'lucide-react';
 
 const SuppliersPage: React.FC = () => {
   const benefits = [
@@ -143,7 +143,7 @@ const SuppliersPage: React.FC = () => {
         </div>
 
         {/* Call to Action */}
-        <div className="bg-gradient-to-br from-blue-600 to-blue-800 rounded-2xl p-8 md:p-12 text-center text-white">
+        <div id="suppliers-cta" className="bg-gradient-to-br from-blue-600 to-blue-800 rounded-2xl p-8 md:p-12 text-center text-white">
           <div className="max-w-3xl mx-auto">
             <h3 className="text-2xl md:text-3xl font-bold mb-6">
               Ready to Start Your Partnership Journey?
@@ -156,13 +156,23 @@ const SuppliersPage: React.FC = () => {
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <div className="flex items-center bg-white bg-opacity-20 rounded-lg px-6 py-3">
                 <Mail className="mr-3" size={20} />
-                <span className="font-semibold">partnerships@tradepro.uk</span>
+                <span className="font-semibold">qasim@qabdistribution.co.uk</span>
               </div>
               
-              <button className="bg-white text-blue-600 px-8 py-4 rounded-lg font-semibold hover:bg-gray-50 transition-colors duration-300 flex items-center group">
+              <a
+                href={
+                  'mailto:qasim@qabdistribution.co.uk?subject=' +
+                  encodeURIComponent('Partnership Inquiry') +
+                  '&body=' +
+                  encodeURIComponent(
+                    'Hello QAB Distribution Team,%0D%0A%0D%0AI would like to discuss a potential partnership. Please find some initial details below:%0D%0A%0D%0ACompany Name:%0D%0AProduct Category:%0D%0AWebsite (if any):%0D%0A%0D%0AThank you,%0D%0A'
+                  )
+                }
+                className="bg-white text-blue-600 px-8 py-4 rounded-lg font-semibold hover:bg-gray-50 transition-colors duration-300 flex items-center group"
+              >
                 Send Partnership Inquiry
                 <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform duration-300" size={20} />
-              </button>
+              </a>
             </div>
             
             <p className="text-sm mt-6 opacity-75">

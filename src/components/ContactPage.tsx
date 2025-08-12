@@ -1,28 +1,14 @@
-import React, { useState } from 'react';
-import { Mail, Phone, MapPin, Clock, Send, CheckCircle } from 'lucide-react';
+import React from 'react';
+import { Mail, Phone, MapPin, Clock, CheckCircle } from 'lucide-react';
 
 const ContactPage: React.FC = () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    company: '',
-    message: '',
-    inquiryType: 'general'
-  });
+  // Contact form temporarily disabled
 
-  const [isSubmitted, setIsSubmitted] = useState(false);
+  const COMPANY_EMAIL = 'qasim@qabdistribution.co.uk';
+  const COMPANY_PHONE = '+44 73 6026 2719';
+  const COMPANY_ADDRESS = '167-169 Great Portland Street, London W1W 5PF, UK';
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // Handle form submission here
-    setIsSubmitted(true);
-    setTimeout(() => setIsSubmitted(false), 3000);
-  };
-
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
-  };
+  const sanitizePhone = (phone: string) => phone.replace(/\s+/g, '');
 
   const contactInfo = [
     {
@@ -30,22 +16,23 @@ const ContactPage: React.FC = () => {
       title: 'Company Address',
       details: [
         'QASIM ALI BAKSH Ltd',
-        '123 Business Park Drive',
-        'London, UK SW1A 1AA'
+        '167-169 Great portland street',
+        'London, UK W1W5PF'
+          
       ]
     },
     {
       icon: Mail,
       title: 'Email Addresses',
       details: [
-        ' qasim@qabdistribution.co.uk'
+        COMPANY_EMAIL
       ]
     },
     {
       icon: Phone,
       title: 'Phone Numbers',
       details: [
-        '+44 73 6026 2179'
+        COMPANY_PHONE
       ]
     },
     {
@@ -65,7 +52,7 @@ const ContactPage: React.FC = () => {
         {/* Header */}
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-            Contact TradePro
+            Contact QAB
           </h2>
           <p className="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
             We're available to answer any questions you have and to explore partnership opportunities. 
@@ -82,150 +69,43 @@ const ContactPage: React.FC = () => {
               </div>
               <h3 className="text-lg font-semibold text-gray-900 mb-4">{info.title}</h3>
               <div className="space-y-2">
-                {info.details.map((detail, idx) => (
-                  <p key={idx} className="text-gray-600 text-sm">{detail}</p>
-                ))}
+                {info.details.map((detail, idx) => {
+                  if (info.title === 'Email Addresses') {
+                    return (
+                      <a
+                        key={idx}
+                        href={`mailto:${detail}`}
+                        className="text-blue-600 text-sm font-medium hover:underline"
+                      >
+                        {detail}
+                      </a>
+                    );
+                  }
+                  if (info.title === 'Phone Numbers') {
+                    return (
+                      <a
+                        key={idx}
+                        href={`tel:${sanitizePhone(detail)}`}
+                        className="text-blue-600 text-sm font-medium hover:underline"
+                      >
+                        {detail}
+                      </a>
+                    );
+                  }
+                  return (
+                    <p key={idx} className="text-gray-600 text-sm">{detail}</p>
+                  );
+                })}
               </div>
             </div>
           ))}
         </div>
 
-        {/* Contact Form and Map Section */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-          {/* Contact Form */}
-          <div className="bg-white p-8 rounded-2xl shadow-lg">
-            <h3 className="text-2xl font-bold text-gray-900 mb-6">Send Us a Message</h3>
-            <p className="text-gray-600 mb-8">
-              Fill out the form below and we'll get back to you within 24 hours.
-            </p>
-
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
-                    Full Name *
-                  </label>
-                  <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleInputChange}
-                    required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors duration-300"
-                    placeholder="Your full name"
-                  />
-                </div>
-
-                <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
-                    Email Address *
-                  </label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleInputChange}
-                    required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors duration-300"
-                    placeholder="your.email@example.com"
-                  />
-                </div>
-              </div>
-
-              <div>
-                <label htmlFor="company" className="block text-sm font-medium text-gray-700 mb-2">
-                  Company Name
-                </label>
-                <input
-                  type="text"
-                  id="company"
-                  name="company"
-                  value={formData.company}
-                  onChange={handleInputChange}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors duration-300"
-                  placeholder="Your company name"
-                />
-              </div>
-
-              <div>
-                <label htmlFor="inquiryType" className="block text-sm font-medium text-gray-700 mb-2">
-                  Inquiry Type
-                </label>
-                <select
-                  id="inquiryType"
-                  name="inquiryType"
-                  value={formData.inquiryType}
-                  onChange={handleInputChange}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors duration-300"
-                >
-                  <option value="general">General Inquiry</option>
-                  <option value="partnership">Partnership Opportunity</option>
-                  <option value="supplier">Become a Supplier</option>
-                  <option value="support">Customer Support</option>
-                </select>
-              </div>
-
-              <div>
-                <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
-                  Message *
-                </label>
-                <textarea
-                  id="message"
-                  name="message"
-                  value={formData.message}
-                  onChange={handleInputChange}
-                  required
-                  rows={5}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors duration-300"
-                  placeholder="Tell us about your inquiry..."
-                ></textarea>
-              </div>
-
-              <button
-                type="submit"
-                disabled={isSubmitted}
-                className="w-full bg-blue-600 text-white py-4 rounded-lg font-semibold text-lg hover:bg-blue-700 transition-colors duration-300 flex items-center justify-center group disabled:bg-green-600"
-              >
-                {isSubmitted ? (
-                  <>
-                    <CheckCircle className="mr-2" size={20} />
-                    Message Sent Successfully!
-                  </>
-                ) : (
-                  <>
-                    Send Message
-                    <Send className="ml-2 group-hover:translate-x-1 transition-transform duration-300" size={20} />
-                  </>
-                )}
-              </button>
-            </form>
-          </div>
-
-          {/* Company Information */}
-          <div className="space-y-8">
-            {/* Map Placeholder */}
-            <div className="bg-white p-8 rounded-2xl shadow-lg">
-              <h3 className="text-2xl font-bold text-gray-900 mb-6">Our Location</h3>
-              <div className="bg-gray-100 rounded-lg h-64 flex items-center justify-center mb-6">
-                <div className="text-center">
-                  <MapPin className="text-gray-400 mx-auto mb-2" size={48} />
-                  <p className="text-gray-500">Interactive map would be here</p>
-                  <p className="text-sm text-gray-400">London, UK - Central Business District</p>
-                </div>
-              </div>
-              <div className="text-center">
-                <p className="text-gray-600 mb-2">We're conveniently located in the heart of London's business district.</p>
-                <button className="text-blue-600 font-semibold hover:text-blue-700 transition-colors duration-300">
-                  Get Directions →
-                </button>
-              </div>
-            </div>
-
-            {/* Additional Information */}
-            <div className="bg-white p-8 rounded-2xl shadow-lg">
-              <h3 className="text-2xl font-bold text-gray-900 mb-6">Why Choose TradePro?</h3>
+          {/* Contact Form and Map Section */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+            {/* Why Choose TradePro at top across both columns */}
+            <div className="bg-white p-8 rounded-2xl shadow-lg lg:col-span-2">
+              <h3 className="text-2xl font-bold text-gray-900 mb-6">Why Choose QAB?</h3>
               <div className="space-y-4">
                 <div className="flex items-start">
                   <CheckCircle className="text-green-500 mr-3 mt-1 flex-shrink-0" size={16} />
@@ -246,14 +126,69 @@ const ContactPage: React.FC = () => {
               </div>
             </div>
 
-            {/* Response Time */}
-            <div className="bg-blue-50 p-6 rounded-xl border-l-4 border-blue-500">
-              <h4 className="font-semibold text-gray-900 mb-2">Quick Response Guarantee</h4>
-              <p className="text-gray-600">
-                We pride ourselves on prompt communication. Expect a response to your inquiry 
-                within 24 hours during business days.
-              </p>
+            {/* Left column: Quick Contact card replaces the removed form */}
+            <div className="bg-white p-8 rounded-2xl shadow-lg h-fit">
+              <h3 className="text-2xl font-bold text-gray-900 mb-4">Quick Contact</h3>
+              <p className="text-gray-600 mb-6">Prefer a quick action? Reach us instantly using any option below.</p>
+              <div className="space-y-4">
+                <a
+                  href={`mailto:${COMPANY_EMAIL}?subject=${encodeURIComponent('General Inquiry')}`}
+                  className="w-full inline-flex items-center justify-center gap-2 bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors"
+                >
+                  <Mail size={18} /> Email Us
+                </a>
+                <a
+                  href={`tel:${sanitizePhone(COMPANY_PHONE)}`}
+                  className="w-full inline-flex items-center justify-center gap-2 border-2 border-blue-600 text-blue-600 px-6 py-3 rounded-lg font-semibold hover:bg-blue-50 transition-colors"
+                >
+                  <Phone size={18} /> Call Us
+                </a>
+              </div>
+              <div className="mt-6 bg-blue-50 p-4 rounded-lg border-l-4 border-blue-500">
+                <h4 className="font-semibold text-gray-900 mb-1">Quick Response Guarantee</h4>
+                <p className="text-gray-600 text-sm">
+                  We pride ourselves on prompt communication. Expect a response to your inquiry within
+                  24 hours during business days.
+                </p>
+              </div>
             </div>
+
+
+            {/* Company Information */
+            }
+          <div className="space-y-8">
+            {/* Map Placeholder */}
+            <div className="bg-white p-8 rounded-2xl shadow-lg">
+              <h3 className="text-2xl font-bold text-gray-900 mb-6">Our Location</h3>
+                <button
+                  onClick={() => {
+                    const url = 'https://www.google.com/maps/search/' + encodeURIComponent(COMPANY_ADDRESS);
+                    window.open(url, '_blank');
+                  }}
+                  className="bg-gray-100 rounded-lg h-64 w-full flex items-center justify-center mb-6 hover:bg-gray-200 transition-colors"
+                >
+                  <div className="text-center">
+                    <MapPin className="text-gray-500 mx-auto mb-2" size={48} />
+                    <p className="text-gray-600 font-medium">Open in Google Maps</p>
+                    <p className="text-sm text-gray-400">London, UK - Central Business District</p>
+                  </div>
+                </button>
+              <div className="text-center">
+                <p className="text-gray-600 mb-2">We're conveniently located in the heart of London's business district.</p>
+                  <button
+                    onClick={() => {
+                      const url = 'https://www.google.com/maps/dir/?api=1&destination=' + encodeURIComponent(COMPANY_ADDRESS);
+                      window.open(url, '_blank');
+                    }}
+                    className="text-blue-600 font-semibold hover:text-blue-700 transition-colors duration-300"
+                  >
+                    Get Directions →
+                  </button>
+              </div>
+            </div>
+
+            {/* Additional Information moved above; removed here */}
+
           </div>
         </div>
       </div>

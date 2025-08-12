@@ -36,7 +36,7 @@ const Footer: React.FC = () => {
           {/* Company Info */}
           <div className="lg:col-span-1">
             <div className="bg-blue-700 text-white px-4 py-2 rounded-lg font-bold text-xl mb-6 inline-block">
-              TradePro
+              QAB 
             </div>
             <p className="text-gray-300 mb-6 leading-relaxed">
               Your trusted UK-based wholesale and retail distribution partner, 
@@ -49,11 +49,11 @@ const Footer: React.FC = () => {
               </div>
               <div className="flex items-center text-gray-300">
                 <Mail className="mr-3 flex-shrink-0" size={16} />
-                <span className="text-sm">info@tradepro.uk</span>
+                <span className="text-sm">qasim@qabdistribution.co.uk</span>
               </div>
               <div className="flex items-center text-gray-300">
                 <Phone className="mr-3 flex-shrink-0" size={16} />
-                <span className="text-sm">+44 20 1234 5678</span>
+                <span className="text-sm">+44 73 6026 2719</span>
               </div>
             </div>
           </div>
