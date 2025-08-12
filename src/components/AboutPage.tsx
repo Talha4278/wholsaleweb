@@ -40,6 +40,7 @@ const AboutPage: React.FC = () => {
               in sourcing and supplying products across multiple categories. We specialize in Amazon FBA 
               wholesale operations, ensuring that products reach their customers swiftly and efficiently.
             </p>
+            <p className="text-sm text-gray-500">UK Company Registration No: <span className="font-semibold">15887805</span></p>
           </div>
         </div>
 

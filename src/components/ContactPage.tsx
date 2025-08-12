@@ -58,6 +58,7 @@ const ContactPage: React.FC = () => {
             We're available to answer any questions you have and to explore partnership opportunities. 
             Get in touch with us today and discover how we can help grow your business together.
           </p>
+          <p className="text-sm text-gray-500 mt-2">UK Company Registration No: <span className="font-semibold">15887805</span></p>
         </div>
 
         {/* Contact Information Grid */}

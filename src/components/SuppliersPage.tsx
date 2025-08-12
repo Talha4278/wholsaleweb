@@ -2,6 +2,9 @@ import React from 'react';
 import { Users, TrendingUp, Mail, CheckCircle, ArrowRight, Award, Globe } from 'lucide-react';
 
 const SuppliersPage: React.FC = () => {
+  const subject = 'Partnership Inquiry';
+  const body = `Hello QAB Distribution Team,\n\nI would like to discuss a potential partnership. Please find some initial details below:\n\nCompany Name:\nProduct Category:\nWebsite (if any):\n\nThank you,`;
+  const mailtoHref = `mailto:qasim@qabdistribution.co.uk?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
   const benefits = [
     {
       icon: TrendingUp,
@@ -160,14 +163,7 @@ const SuppliersPage: React.FC = () => {
               </div>
               
               <a
-                href={
-                  'mailto:qasim@qabdistribution.co.uk?subject=' +
-                  encodeURIComponent('Partnership Inquiry') +
-                  '&body=' +
-                  encodeURIComponent(
-                    'Hello QAB Distribution Team,%0D%0A%0D%0AI would like to discuss a potential partnership. Please find some initial details below:%0D%0A%0D%0ACompany Name:%0D%0AProduct Category:%0D%0AWebsite (if any):%0D%0A%0D%0AThank you,%0D%0A'
-                  )
-                }
+                href={mailtoHref}
                 className="bg-white text-blue-600 px-8 py-4 rounded-lg font-semibold hover:bg-gray-50 transition-colors duration-300 flex items-center group"
               >
                 Send Partnership Inquiry

@@ -107,6 +107,7 @@ const Footer: React.FC = () => {
                 <h4 className="text-white font-medium mb-2">Certifications</h4>
                 <ul className="text-gray-300 text-sm space-y-1">
                   <li>UK Company Registration</li>
+                  <li>Company No: 15887805</li>
                   <li>Import/Export License</li>
                   <li>Quality Assurance Standards</li>
                 </ul>
@@ -140,7 +141,7 @@ const Footer: React.FC = () => {
                 Trusted by brands and distributors across 6 major categories
               </p>
               <p className="text-gray-500 text-xs">
-                © {currentYear} QASIM ALI BAKSH  Ltd. All rights reserved.
+                © {currentYear} QASIM ALI BAKSH  Ltd. Company No. 15887805. All rights reserved.
               </p>
             </div>
           </div>
