@@ -2,18 +2,19 @@ import React from 'react';
 import { Heart, Sparkles, SprayCan as Spray, ShoppingCart, Wrench, FileText, ArrowRight, CheckCircle } from 'lucide-react';
 
 interface CategoriesPageProps {
-  onLearnMore?: () => void;
+  onLearnMore?: (slug: string) => void;
 }
 
 const CategoriesPage: React.FC<CategoriesPageProps> = ({ onLearnMore }) => {
-  const handleLearnMore = () => {
+  const handleLearnMore = (slug: string) => {
     if (onLearnMore) {
-      onLearnMore();
+      onLearnMore(slug);
     }
   };
   const categories = [
     {
       icon: Heart,
+      slug: 'health-wellness',
       name: 'Health & Wellness',
       description: 'Explore a wide range of wellness products designed to support physical and mental health.',
       details: [
@@ -30,6 +31,7 @@ const CategoriesPage: React.FC<CategoriesPageProps> = ({ onLearnMore }) => {
     },
     {
       icon: Sparkles,
+      slug: 'beauty-personal-care',
       name: 'Beauty & Personal Care',
       description: 'High-quality beauty and personal care products for every need and preference.',
       details: [
@@ -46,6 +48,7 @@ const CategoriesPage: React.FC<CategoriesPageProps> = ({ onLearnMore }) => {
     },
     {
       icon: Spray,
+      slug: 'household-cleaning',
       name: 'Household Cleaning',
       description: 'Safe and effective cleaning solutions for a cleaner, healthier home.',
       details: [
@@ -62,6 +65,7 @@ const CategoriesPage: React.FC<CategoriesPageProps> = ({ onLearnMore }) => {
     },
     {
       icon: ShoppingCart,
+      slug: 'grocery',
       name: 'Grocery',
       description: 'A selection of essential grocery products for everyday needs.',
       details: [
@@ -78,6 +82,7 @@ const CategoriesPage: React.FC<CategoriesPageProps> = ({ onLearnMore }) => {
     },
     {
       icon: Wrench,
+      slug: 'tools-diy',
       name: 'Tools & DIY',
       description: 'Top-tier tools and DIY essentials for all your home improvement projects.',
       details: [
@@ -94,6 +99,7 @@ const CategoriesPage: React.FC<CategoriesPageProps> = ({ onLearnMore }) => {
     },
     {
       icon: FileText,
+      slug: 'office-supplies',
       name: 'Office Supplies',
       description: 'Reliable office products to help businesses and individuals stay productive.',
       details: [
@@ -165,7 +171,7 @@ const CategoriesPage: React.FC<CategoriesPageProps> = ({ onLearnMore }) => {
                 </div>
                 
                 <button 
-                  onClick={handleLearnMore}
+                  onClick={() => handleLearnMore(category.slug)}
                   className={`inline-flex items-center px-6 py-3 rounded-lg font-semibold text-sm transition-all duration-300 ${category.bgColor} ${category.iconColor} hover:shadow-md group-hover:translate-x-1 cursor-pointer`}
                 >
                   Learn More

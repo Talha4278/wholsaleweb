@@ -12,6 +12,7 @@ function App() {
   const [activeSection, setActiveSection] = useState('home');
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [showCategoryDetails, setShowCategoryDetails] = useState(false);
+  const [selectedCategorySlug, setSelectedCategorySlug] = useState<string | null>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -49,7 +50,16 @@ function App() {
       
       {showCategoryDetails ? (
         <CategoryDetailsPage 
-          onBack={() => setShowCategoryDetails(false)} 
+          targetSlug={selectedCategorySlug || undefined}
+          onBack={() => {
+            setShowCategoryDetails(false);
+            setTimeout(() => {
+              const homeElement = document.getElementById('home');
+              if (homeElement) {
+                homeElement.scrollIntoView({ behavior: 'smooth' });
+              }
+            }, 100);
+          }} 
           onContactUs={() => {
             setShowCategoryDetails(false);
             // Scroll to contact section after returning to main page
@@ -65,7 +75,10 @@ function App() {
         <main>
           <HomePage />
           <AboutPage />
-          <CategoriesPage onLearnMore={() => setShowCategoryDetails(true)} />
+          <CategoriesPage onLearnMore={(slug) => {
+            setSelectedCategorySlug(slug);
+            setShowCategoryDetails(true);
+          }} />
           <SuppliersPage />
           <ContactPage />
         </main>

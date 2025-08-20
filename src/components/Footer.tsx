@@ -81,7 +81,7 @@ const Footer: React.FC = () => {
             <ul className="space-y-3">
               {categories.map((category, index) => (
                 <li key={index}>
-                  <span className="text-gray-300 text-sm hover:text-white transition-colors duration-300 cursor-pointer">
+                  <span className="text-gray-300 text-sm">
                     {category}
                   </span>
                 </li>
@@ -141,7 +141,7 @@ const Footer: React.FC = () => {
                 Trusted by brands and distributors across 6 major categories
               </p>
               <p className="text-gray-500 text-xs">
-                © {currentYear} QASIM ALI BAKSH  Ltd. Company No. 15887805. All rights reserved.
+                © {currentYear} QASIM ALI BAKHSH  Ltd. Company No. 15887805. All rights reserved.
               </p>
             </div>
           </div>

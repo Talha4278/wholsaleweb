@@ -15,7 +15,7 @@ const ContactPage: React.FC = () => {
       icon: MapPin,
       title: 'Company Address',
       details: [
-        'QASIM ALI BAKSH Ltd',
+        'QASIM ALI BAKHSH Ltd',
         '167-169 Great portland street',
         'London, UK W1W5PF'
           

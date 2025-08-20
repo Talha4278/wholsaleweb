@@ -1,15 +1,17 @@
-import React from 'react';
+import React, { useEffect, useMemo } from 'react';
 import { Heart, Sparkles, SprayCan as Spray, ShoppingCart, Wrench, FileText, ArrowLeft, CheckCircle, Star, Users, Award, Globe } from 'lucide-react';
 
 interface CategoryDetailsPageProps {
   onBack: () => void;
   onContactUs: () => void;
+  targetSlug?: string;
 }
 
-const CategoryDetailsPage: React.FC<CategoryDetailsPageProps> = ({ onBack, onContactUs }) => {
+const CategoryDetailsPage: React.FC<CategoryDetailsPageProps> = ({ onBack, onContactUs, targetSlug }) => {
   const categories = [
     {
       icon: Heart,
+      slug: 'health-wellness',
       name: 'Health & Wellness',
       description: 'Explore a comprehensive range of wellness products designed to support both physical and mental health across all age groups.',
       detailedDescription: 'Our Health & Wellness category encompasses a wide variety of products from trusted brands and authorized distributors. We focus on products that promote overall well-being, from daily supplements to specialized health equipment. All products undergo rigorous quality checks and comply with UK health regulations.',
@@ -35,6 +37,7 @@ const CategoryDetailsPage: React.FC<CategoryDetailsPageProps> = ({ onBack, onCon
     },
     {
       icon: Sparkles,
+      slug: 'beauty-personal-care',
       name: 'Beauty & Personal Care',
       description: 'High-quality beauty and personal care products for every need, preference, and skin type from premium international brands.',
       detailedDescription: 'Our beauty collection features products from established brands and emerging innovators in the beauty industry. We source directly from manufacturers and authorized distributors, ensuring authentic products with proper certifications. Perfect for retailers looking to expand their beauty offerings.',
@@ -60,6 +63,7 @@ const CategoryDetailsPage: React.FC<CategoryDetailsPageProps> = ({ onBack, onCon
     },
     {
       icon: Spray,
+      slug: 'household-cleaning',
       name: 'Household Cleaning',
       description: 'Safe, effective, and eco-friendly cleaning solutions for a cleaner, healthier home environment.',
       detailedDescription: 'Our household cleaning range includes both traditional and innovative eco-friendly solutions. We partner with manufacturers who prioritize safety and environmental responsibility while maintaining cleaning effectiveness. Perfect for retailers focusing on sustainable living products.',
@@ -85,6 +89,7 @@ const CategoryDetailsPage: React.FC<CategoryDetailsPageProps> = ({ onBack, onCon
     },
     {
       icon: ShoppingCart,
+      slug: 'grocery',
       name: 'Grocery',
       description: 'A carefully curated selection of essential grocery products for everyday needs and specialty dietary requirements.',
       detailedDescription: 'Our grocery category focuses on non-perishable and specialty food items that are perfect for e-commerce and Amazon FBA. We work with food manufacturers and distributors who meet strict quality and safety standards, offering products with good shelf life and strong market demand.',
@@ -110,6 +115,7 @@ const CategoryDetailsPage: React.FC<CategoryDetailsPageProps> = ({ onBack, onCon
     },
     {
       icon: Wrench,
+      slug: 'tools-diy',
       name: 'Tools & DIY',
       description: 'Professional-grade tools and DIY essentials for all your home improvement and construction projects.',
       detailedDescription: 'Our tools and DIY category features products from reputable manufacturers known for durability and reliability. Whether you\'re supplying professional contractors or DIY enthusiasts, we offer a comprehensive range of tools and hardware that meet industry standards.',
@@ -135,6 +141,7 @@ const CategoryDetailsPage: React.FC<CategoryDetailsPageProps> = ({ onBack, onCon
     },
     {
       icon: FileText,
+      slug: 'office-supplies',
       name: 'Office Supplies',
       description: 'Comprehensive office products to help businesses and individuals maintain productivity and organization.',
       detailedDescription: 'Our office supplies range covers everything from basic stationery to advanced office technology. We understand the needs of modern businesses and remote workers, offering products that enhance productivity and maintain professional standards.',
@@ -160,6 +167,20 @@ const CategoryDetailsPage: React.FC<CategoryDetailsPageProps> = ({ onBack, onCon
     }
   ];
 
+  const targetIndex = useMemo(() => {
+    if (!targetSlug) return 0;
+    const idx = categories.findIndex(c => c.slug === targetSlug);
+    return idx === -1 ? 0 : idx;
+  }, [targetSlug]);
+
+  useEffect(() => {
+    // Scroll to the specific category section on mount
+    const element = document.getElementById(`category-${targetIndex}`);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }, [targetIndex]);
+
   const stats = [
     { icon: Users, value: '500+', label: 'Active Products', description: 'Across all categories' },
     { icon: Globe, value: '15+', label: 'Countries Served', description: 'Worldwide shipping' },
@@ -169,17 +190,22 @@ const CategoryDetailsPage: React.FC<CategoryDetailsPageProps> = ({ onBack, onCon
 
   return (
     <section className="bg-gray-50 min-h-screen">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-        {/* Header with Back Button */}
-        <div className="mb-16">
+      {/* Fixed Back Bar */}
+      <div className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/80 shadow">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
           <button 
             onClick={onBack}
-            className="inline-flex items-center text-blue-600 hover:text-blue-700 font-semibold mb-6 transition-colors duration-300"
+            className="inline-flex items-center text-blue-600 hover:text-blue-700 font-semibold transition-colors duration-300"
           >
             <ArrowLeft className="mr-2" size={20} />
-            Back to Main Categories
+            Back to Main Page
           </button>
-          
+        </div>
+      </div>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-20">
+        {/* Header */}
+        <div className="mb-16">
           <div className="text-center">
             <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
               Complete Category Guide
@@ -210,6 +236,7 @@ const CategoryDetailsPage: React.FC<CategoryDetailsPageProps> = ({ onBack, onCon
           {categories.map((category, index) => (
             <div 
               key={index} 
+              id={`category-${index}`}
               className="bg-white rounded-3xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300"
             >
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-0">
